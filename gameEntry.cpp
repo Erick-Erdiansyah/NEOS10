@@ -31,9 +31,10 @@ std::vector<unsigned int> gameEntry::basicOffset() const {
 	return basicInfoOffsets;
 }
 
-std::vector<unsigned int> gameEntry::hpOffset() {
+std::vector<unsigned int> gameEntry::hpOffset(int keypress) {
 	const auto& offsets = gameEntry::basicOffset();
-	std::vector<unsigned int> hp = { 0x25C };
+	std::vector<unsigned int> hp;
+	hp.push_back(OffsetLists.at(keypress));
 	hp.insert(hp.begin(), offsets.begin(), offsets.end());
 	return hp;
 }
@@ -42,9 +43,6 @@ std::vector<unsigned int> gameEntry::consumableAddress(int keypressed) {
 	const auto& offsets = gameEntry::basicOffset();
 	std::vector<unsigned int> Offset;
 	switch (keypressed) {
-	case 0:
-		Offset.push_back(OffsetLists.at(0));
-		break;
 	case 1:
 		Offset.push_back(OffsetLists.at(1));
 		break;
@@ -53,6 +51,9 @@ std::vector<unsigned int> gameEntry::consumableAddress(int keypressed) {
 		break;
 	case 3:
 		Offset.push_back(OffsetLists.at(3));
+		break;
+	case 4:
+		Offset.push_back(OffsetLists.at(4));
 		break;
 	default:
 		break;

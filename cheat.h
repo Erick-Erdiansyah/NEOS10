@@ -7,7 +7,7 @@ class cheat
 {
 public:
 	gameEntry Entry;
-	void healthCheat();
+	void healthCheat(int key);
 	int runMe();
 	int consumableCheat(int item);
 
